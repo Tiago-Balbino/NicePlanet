@@ -15,7 +15,7 @@ class AuthController extends Controller
 
             $credentials = $request->only(['nomeUsuario', 'senhaUsuario']);
 
-            if (Auth::attempt($credentials)) {
+            if (Auth::attempt(['nomeUsuario' => $credentials['nomeUsuario'], 'password' => $credentials['senhaUsuario']])) {
                 $user = Auth::user();
                 $token = $user->createToken('authToken')->plainTextToken;
                 return response()->json(['token' => $token], 200);

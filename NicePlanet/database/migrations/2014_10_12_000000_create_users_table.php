@@ -8,11 +8,11 @@ return new class extends Migration
 {
 
     //Cria a tabela de usuários
-    public function up(): void
+    public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nomeUsuario');
+            $table->string('nomeUsuario')->unique();
             $table->string('senhaUsuario');
             $table->timestamps();
         });

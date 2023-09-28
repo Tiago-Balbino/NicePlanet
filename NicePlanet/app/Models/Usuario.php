@@ -11,7 +11,7 @@ class Usuario extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'usuario';
+    protected $table = 'usuarios';
     protected $fillable = [
         'nomeUsuario',
         'senhaUsuario',
@@ -19,9 +19,6 @@ class Usuario extends Authenticatable
 
     protected $password = 'senhaUsuario';
 
-    // Oculta a senha do usuário para não ser retornada em requisições
-    protected $hidden = [
-        'senhaUsuario',
-    ];
+    protected $hidden = ['senhaUsuario'];
 
 }
