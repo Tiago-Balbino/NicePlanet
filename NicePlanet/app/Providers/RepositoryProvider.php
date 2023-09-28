@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\Auth\AuthRepository;
+use App\Repository\Auth\IAuthRepository;
 use App\Repository\Produtor\IProdutorRepository;
 use App\Repository\Produtor\ProdutorRepository;
 use App\Repository\Propriedade\IPropriedadeRepository;
@@ -19,6 +21,7 @@ class RepositoryProvider extends ServiceProvider
     {
         $this->app->bind(IProdutorRepository::class, ProdutorRepository::class);
         $this->app->bind(IPropriedadeRepository::class, PropriedadeRepository::class);
+        $this->app->bind(IAuthRepository::class, AuthRepository::class);
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Auth\AuthService;
+use App\Services\Auth\IAuthService;
 use App\Services\Produtor\IProdutorService;
 use App\Services\Produtor\ProdutorService;
 use App\Services\Propriedade\IPropriedadeService;
@@ -16,6 +18,7 @@ class ServicesProvider extends ServiceProvider
     {
         $this->app->bind(IProdutorService::class, ProdutorService::class);
         $this->app->bind(IPropriedadeService::class, PropriedadeService::class);
+        $this->app->bind(IAuthService::class, AuthService::class);
     }
 
     // inicializa os serviços

@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
 
-    //Cria a tabela de usuários
+    //Cria a tabela de usuário
     public function up()
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('usuario', function (Blueprint $table) {
             $table->id();
             $table->string('nomeUsuario')->unique();
             $table->string('senhaUsuario');
@@ -19,7 +19,7 @@ return new class extends Migration
     }
 
 
-    //Deleta a tabela de usuários
+    //Deleta a tabela de usuário
     public function down(): void
     {
         Schema::dropIfExists('usuario');
