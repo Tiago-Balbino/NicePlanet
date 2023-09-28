@@ -6,4 +6,6 @@ interface IProdutorService
 {
 
     public function create($request);
+
+    public function getId($id);
 }

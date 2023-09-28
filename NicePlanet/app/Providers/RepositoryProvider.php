@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Repository\Produtor\IProdutorRepository;
 use App\Repository\Produtor\ProdutorRepository;
-use App\Repository\Propiedade\IPropiedadeRepository;
-use App\Repository\Propiedade\PropiedadeRepository;
+use App\Repository\Propriedade\IPropriedadeRepository;
+use App\Repository\Propriedade\PropriedadeRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryProvider extends ServiceProvider
@@ -18,7 +18,7 @@ class RepositoryProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(IProdutorRepository::class, ProdutorRepository::class);
-        $this->app->bind(IPropiedadeRepository::class, PropiedadeRepository::class);
+        $this->app->bind(IPropriedadeRepository::class, PropriedadeRepository::class);
     }
 
     /**

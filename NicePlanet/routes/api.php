@@ -1,21 +1,18 @@
 <?php
 
+use App\Http\Controllers\ProdutorController;
+use App\Http\Controllers\PropriedadeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout']);
 
+Route::post('/produtor', [ProdutorController::class, 'create'])->name('produtor');
+Route::get('/produtor/{id}', [ProdutorController::class, 'getId'])->name('getProdutor');
 
-// Grupo com rotas protegidas que exigem autenticação.
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-
-    Route::post('/produtor', 'ProdutorController@create');
-});
-
+Route::post('/propriedade', [PropriedadeController::class, 'create'])->name('propiedade');
+Route::get('/propriedade/{id}', [PropriedadeController::class, 'getId'])->name('getPropiedade');
 

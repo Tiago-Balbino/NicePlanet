@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Request\ProdutorRequest;
-use App\Services\Produtor\IProdutorService;
+use App\Http\Request\PropriedadeRequest;
+use App\Services\Propriedade\IPropriedadeService;
 use Illuminate\Routing\Controller as BaseController;
 
-class ProdutorController extends BaseController
+
+class PropriedadeController extends BaseController
 {
     private $service;
 
-    public function __construct(IProdutorService $service)
+    public function __construct(IPropriedadeService $service)
     {
         $this->service = $service;
     }
 
-    public function create(ProdutorRequest $request)
+    public function create(PropriedadeRequest $request)
     {
         return $this->service->create($request);
     }
@@ -23,5 +24,4 @@ class ProdutorController extends BaseController
     public function getId($id) {
         return $this->service->getId($id);
     }
-
 }

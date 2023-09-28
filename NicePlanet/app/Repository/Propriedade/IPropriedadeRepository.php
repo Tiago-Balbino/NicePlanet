@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\Produtor;
+namespace App\Repository\Propriedade;
 
-interface IProdutorRepository
+interface IPropriedadeRepository
 {
 
     public function create($data);

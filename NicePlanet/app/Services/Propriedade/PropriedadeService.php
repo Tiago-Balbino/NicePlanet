@@ -1,19 +1,21 @@
 <?php
 
-namespace App\Services\Produtor;
+namespace App\Services\Propriedade;
 
-use App\Repository\Produtor\IProdutorRepository;
+use App\Http\Request\PropriedadeRequest;
+use App\Repository\Propriedade\IPropriedadeRepository;
 
-class ProdutorService implements IProdutorService
+class PropriedadeService implements IPropriedadeService
 {
+
     private $repository;
 
-    public function __construct(IProdutorRepository $repository)
+    public function __construct(IPropriedadeRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function create($request)
+    public function create(PropriedadeRequest $request)
     {
         try {
             $data = $request->all();

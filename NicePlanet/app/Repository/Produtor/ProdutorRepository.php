@@ -18,4 +18,9 @@ class ProdutorRepository implements IProdutorRepository
     {
         return $this->entity->create($data);
     }
+
+    public function getId($id)
+    {
+        return $this->entity->where('id', $id)->first();
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProdutorRequest extends FormRequest
+class PropriedadeRequest extends FormRequest
 {
 
     // Regras de autorização de acesso
@@ -13,12 +13,12 @@ class ProdutorRequest extends FormRequest
         return true;
     }
 
-    // Adiciona as regras de validações dos campos de Produtor
+    // Adiciona as regras de validações dos campos de Propriedade
     public function rules()
     {
         return [
-            'nomeProdutor' => 'required|string',
-            'cpfProdutor' => 'required|string|regex:/^\d{11}$/',
+            'nomePropriedade' => 'required|string',
+            'cadastroRural' => 'required|string',
         ];
     }
 }
