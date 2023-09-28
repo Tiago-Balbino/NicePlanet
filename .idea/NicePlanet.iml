@@ -8,6 +8,8 @@
       <sourceFolder url="file://$MODULE_DIR$/NicePlanet/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/NicePlanet/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/NicePlanet/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

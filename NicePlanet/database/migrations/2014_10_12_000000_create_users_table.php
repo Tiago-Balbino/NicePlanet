@@ -6,27 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
+    //Cria a tabela de usuários
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuario', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('nomeUsuario');
+            $table->string('senhaUsuario');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
+    //Deleta a tabela de usuários
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('usuario');
     }
 };

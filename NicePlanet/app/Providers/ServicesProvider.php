@@ -10,23 +10,15 @@ use Illuminate\Support\ServiceProvider;
 
 class ServicesProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
+
+    // registra os serviços e suas interfaces
     public function register()
     {
         $this->app->bind(IProdutorService::class, ProdutorService::class);
         $this->app->bind(IPropiedadeService::class, PropiedadeService::class);
-
     }
 
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
+    // inicializa os serviços
     public function boot()
     {
         //
