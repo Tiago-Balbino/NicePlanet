@@ -11,15 +11,20 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only(['nomeUsuario', 'senhaUsuario']);
+        try {
 
-        if (Auth::guard('api')->attempt($credentials)) {
-            $user = Auth::guard('api')->user();
-            $token = $user->createToken('authToken')->plainTextToken;
-            return response()->json(['token' => $token], 200);
+            $credentials = $request->only(['nomeUsuario', 'senhaUsuario']);
+
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
+                $token = $user->createToken('authToken')->plainTextToken;
+                return response()->json(['token' => $token], 200);
+            }
+            return response()->json(['message' => 'Usuário ou senha inválidos'], 401);
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Erro ao realizar login'], 500);
         }
-
-        return response()->json(['message' => 'Usuário ou senha inválidos'], 401);
     }
 
     public function register(Request $request)

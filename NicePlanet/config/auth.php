@@ -1,10 +1,12 @@
 <?php
 
 return [
+
     'defaults' => [
-        'guard' => 'api',
-        'passwords' => 'users',
+    'guard' => 'web',
+    'passwords' => 'users',
     ],
+
 
     'guards' => [
         'web' => [
@@ -12,16 +14,32 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'sanctum', // Use o driver Sanctum para autenticação de API
-            'provider' => 'users', // Use o provedor de usuários 'users'
+            'driver' => 'sanctum',
+            'provider' => 'users',
+            'hash' => true,
         ],
     ],
+
+
 
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Usuario::class, // Modelo de usuário correspondente
+            'model' => App\Models\Usuario::class,
         ],
+
+
+        'passwords' => [
+            'users' => [
+                'provider' => 'users',
+                'table' => 'password_reset_tokens',
+                'expire' => 60,
+                'throttle' => 60,
+            ],
+        ],
+
+        'password_timeout' => 10800,
+
     ],
 ];
 
