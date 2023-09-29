@@ -46,6 +46,7 @@ Para instalar e executar o projeto localmente, siga as instruções abaixo:
     ```bash
     php artisan serve
 
-- acesse a url: [http://127.0.0.1:8000](http://127.0.0.1:8000/api/docs)http://127.0.0.1:8000/api/docs
+- acesse a url: [http://127.0.0.1:8000](http://127.0.0.1:8000/api/docs)
 
-6. agora e possivel ver a documentação de rotas e testalas, abaixo estara o passo a passo de como rodar as requisição para que a autenticação funcione. 
+
+Agora e possivel ver a documentação de rotas. 
