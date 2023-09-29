@@ -123,6 +123,11 @@
       <path value="$PROJECT_DIR$/NicePlanet/vendor/dragonmantank/cron-expression" />
       <path value="$PROJECT_DIR$/NicePlanet/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/NicePlanet/vendor/composer" />
+      <path value="$PROJECT_DIR$/NicePlanet/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/NicePlanet/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/NicePlanet/vendor/swagger-api/swagger-ui" />
+      <path value="$PROJECT_DIR$/NicePlanet/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/NicePlanet/vendor/darkaonline/l5-swagger" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
