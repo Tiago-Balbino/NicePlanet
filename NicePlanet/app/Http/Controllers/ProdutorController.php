@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Request\ProdutorRequest;
 use App\Services\Produtor\IProdutorService;
-use Illuminate\Routing\Controller as BaseController;
 
-class ProdutorController extends BaseController
+class ProdutorController extends Controller
 {
     private $service;
 

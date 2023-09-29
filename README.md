@@ -34,19 +34,19 @@ Para instalar e executar o projeto localmente, siga as instruções abaixo:
    composer install
 
 
-3. apos installar a dependencia copia a pasta .env-exemple e remova o "-exemple"
+3. Apos installar a dependencia copia a pasta .env-exemple e remova o "-exemple"
 
-4. altere dentro do .env as configurações do seu banco de dados e rode:
+4. Altere dentro do .env as configurações do seu banco de dados e rode:
 
     ```bash
    php artisan migrate:install
 
-5. depois de rodas as migrações, rode o projeto com o comando: 
+5. Depois de rodas as migrações, rode o projeto com o comando: 
 
     ```bash
     php artisan serve
 
-- acesse a url: [http://127.0.0.1:8000](http://127.0.0.1:8000/api/docs)
+- Acesse a url: [http://127.0.0.1:8000/api/docs](http://127.0.0.1:8000/api/docs)
 
 
 Agora e possivel ver a documentação de rotas. 

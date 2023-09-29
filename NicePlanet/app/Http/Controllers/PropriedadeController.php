@@ -7,7 +7,7 @@ use App\Services\Propriedade\IPropriedadeService;
 use Illuminate\Routing\Controller as BaseController;
 
 
-class PropriedadeController extends BaseController
+class PropriedadeController extends Controller
 {
     private $service;
 
