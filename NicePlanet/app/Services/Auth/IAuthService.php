@@ -11,5 +11,4 @@ interface IAuthService
 
     public function register(AuthRequest $request);
 
-    public function logout();
 }

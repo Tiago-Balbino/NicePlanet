@@ -31,18 +31,4 @@ class AuthService implements IAuthService
 
         return $this->repository->register($user);
     }
-
-    public function logout()
-    {
-         if (auth()->user()->tokens()->delete()) {
-             return response()->json([
-                 'message' => 'Logout realizado com sucesso',
-                 'user' => auth()->user(),
-             ], 200);
-         }
-
-         return response()->json([
-             'message' => 'Erro ao realizar logout',
-         ], 500);
-    }
 }

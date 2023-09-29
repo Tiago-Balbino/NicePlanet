@@ -1,0 +1,432 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Nice Planet API",
+        "description": "Nice Planet API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Faz login e retorna um token de acesso",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "Credenciais de login",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nomeUsuario",
+                                    "senhaUsuario"
+                                ],
+                                "properties": {
+                                    "nomeUsuario": {
+                                        "type": "string",
+                                        "example": "tiago"
+                                    },
+                                    "senhaUsuario": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token de acesso gerado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "seu_token_de_acesso"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "Bearer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Credenciais inválidas"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Cria um novo usuário",
+                "operationId": "register",
+                "requestBody": {
+                    "description": "Dados do novo usuário",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nomeUsuario",
+                                    "senhaUsuario"
+                                ],
+                                "properties": {
+                                    "nomeUsuario": {
+                                        "type": "string",
+                                        "example": "novo_nome_de_usuario"
+                                    },
+                                    "senhaUsuario": {
+                                        "type": "string",
+                                        "example": "nova_senha"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso"
+                    },
+                    "500": {
+                        "description": "Erro ao criar usuário"
+                    }
+                }
+            }
+        },
+        "/api/produtor": {
+            "post": {
+                "tags": [
+                    "Produtor"
+                ],
+                "summary": "Cria um novo produtor",
+                "operationId": "createProdutor",
+                "requestBody": {
+                    "description": "Dados do produtor a serem criados",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nomeProdutor",
+                                    "cpfProdutor"
+                                ],
+                                "properties": {
+                                    "nomeProdutor": {
+                                        "type": "string"
+                                    },
+                                    "cpfProdutor": {
+                                        "type": "string",
+                                        "format": "regex",
+                                        "pattern": "^\\d{11}$"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produtor criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produtor criado com sucesso"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "nomeProdutor": {
+                                                    "type": "string"
+                                                },
+                                                "cpfProdutor": {
+                                                    "type": "string",
+                                                    "format": "regex",
+                                                    "pattern": "^\\d{11}$"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erro de validação"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "nomeProdutor": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "O campo nomeProdutor é obrigatório."
+                                                    }
+                                                },
+                                                "cpfProdutor": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "O campo cpfProdutor deve ter 11 dígitos."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/produtor/{id}": {
+            "get": {
+                "tags": [
+                    "Produtor"
+                ],
+                "summary": "Obtém um produtor por ID",
+                "operationId": "getProdutorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produtor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produtor encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "nomeProdutor": {
+                                            "type": "string"
+                                        },
+                                        "cpfProdutor": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    },
+                    "404": {
+                        "description": "Produtor não encontrado"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/propriedade": {
+            "post": {
+                "tags": [
+                    "Propriedade"
+                ],
+                "summary": "Cria uma nova propriedade",
+                "operationId": "createPropriedade",
+                "requestBody": {
+                    "description": "Dados da propriedade a serem criados",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nomePropriedade",
+                                    "cadastroRural"
+                                ],
+                                "properties": {
+                                    "nomePropriedade": {
+                                        "type": "string"
+                                    },
+                                    "cadastroRural": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Propriedade criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Propriedade criada com sucesso"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "nomePropriedade": {
+                                                    "type": "string"
+                                                },
+                                                "cadastroRural": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erro de validação"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "nomePropriedade": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "O campo nomePropriedade é obrigatório."
+                                                    }
+                                                },
+                                                "cadastroRural": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "O campo cadastroRural é obrigatório."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/propriedade/{id}": {
+            "get": {
+                "tags": [
+                    "Propriedade"
+                ],
+                "summary": "Obtém uma propriedade por ID",
+                "operationId": "getPropriedadeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da propriedade",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Propriedade encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "nomePropriedade": {
+                                            "type": "string"
+                                        },
+                                        "cadastroRural": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    },
+                    "404": {
+                        "description": "Propriedade não encontrada"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

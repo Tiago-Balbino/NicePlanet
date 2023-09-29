@@ -10,6 +10,11 @@
       <sourceFolder url="file://$MODULE_DIR$/NicePlanet/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/NicePlanet/vendor/darkaonline/l5-swagger" />
+      <excludeFolder url="file://$MODULE_DIR$/NicePlanet/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/NicePlanet/vendor/psr/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/NicePlanet/vendor/swagger-api/swagger-ui" />
+      <excludeFolder url="file://$MODULE_DIR$/NicePlanet/vendor/zircote/swagger-php" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
